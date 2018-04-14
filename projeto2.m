@@ -20,5 +20,12 @@ end
 [valRGB, rotulos] = leLabelsValores('RGBvalues.txt', 'labels.txt');
 
 %% Bayes
-respostaObtidasBayes = bayesClassification(valRGB, rotulos, listaImagens);
+firstTimeBayes = 0; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+
+if(firstTimeBayes)
+    respostaObtidasBayes = bayesClassification(valRGB, rotulos, listaImagens);
+else
+    load('respostasBayes.mat');
+end
+
  
