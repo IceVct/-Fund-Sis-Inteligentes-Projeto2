@@ -19,16 +19,41 @@ end
 %% Obtendo os valores RGB e os rotulos das regioes associadas
 [valRGB, rotulos] = leLabelsValores('RGBvalues.txt', 'labels.txt');
 
-%% Bayes
-firstTimeBayes = 0; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+% Variavel que escolhe qual metodo sera utilizado:
+% 0 - Bayes
+% 1 - LDA
+% 2 - QDA
+% 3 - Knn
+modelo = 1;
 
-if(firstTimeBayes)
-    [modeloBayes, respostaObtidasBayes] = bayesClassification(valRGB, rotulos, listaImagens);
-    save('modeloBayes.mat', 'modeloBayes');
-    save('respostasBayes.mat', 'respostaObtidasBayes');
-else
-    load('respostasBayes.mat');
-    load('modeloBayes.mat');
+%% Bayes
+if(modelo == 0)
+    firstTimeBayes = 0; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+    
+    if(firstTimeBayes)
+        [modeloBayes, respostaObtidasBayes] = bayesClassification(valRGB, rotulos, listaImagens);
+        save('modeloBayes.mat', 'modeloBayes');
+        save('respostasBayes.mat', 'respostaObtidasBayes');
+    else
+        load('respostasBayes.mat');
+        load('modeloBayes.mat');
+    end
 end
+
+%% LDA
+if(modelo == 1)
+    firstTimeLDA = 0; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+    
+    if(firstTimeLDA)
+        [modeloLDA, respostaObtidasLDA] = ldaClassification(valRGB, rotulos, listaImagens);
+        save('modeloLDA.mat', 'modeloLDA');
+        save('respostaLDA.mat', 'respostaObtidasLDA');
+    else
+        load('respostaLDA.mat');
+        load('modeloLDA.mat');
+    end
+end
+
+
 
  
