@@ -23,9 +23,12 @@ end
 firstTimeBayes = 0; % vai controlar se vai ou nao executar de novo o treinamento e validacao
 
 if(firstTimeBayes)
-    respostaObtidasBayes = bayesClassification(valRGB, rotulos, listaImagens);
+    [modeloBayes, respostaObtidasBayes] = bayesClassification(valRGB, rotulos, listaImagens);
+    save('modeloBayes.mat', 'modeloBayes');
+    save('respostasBayes.mat', 'respostaObtidasBayes');
 else
     load('respostasBayes.mat');
+    load('modeloBayes.mat');
 end
 
  
