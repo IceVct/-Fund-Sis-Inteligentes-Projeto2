@@ -55,5 +55,32 @@ if(modelo == 1)
 end
 
 
+%% QDA
+if(modelo == 2)
+    firstTimeQDA = 1; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+    
+    if(firstTimeQDA)
+        [modeloQDA, respostaObtidasQDA] = qdaClassification(valRGB, rotulos, listaImagens);
+        save('modeloQDA.mat', 'modeloQDA');
+        save('respostaQDA.mat', 'respostaObtidasQDA');
+    else
+        load('respostaQDA.mat');
+        load('modeloQDA.mat');
+    end
+end
+
+ %% KNN
+if(modelo == 3)
+    firstTimeKNN = 1; % vai controlar se vai ou nao executar de novo o treinamento e validacao
+    
+    if(firstTimeKNN)
+        [modeloKNN, respostaObtidasKNN] = knnClassification(valRGB, rotulos, listaImagens);
+        save('modeloKNN.mat', 'modeloKNN');
+        save('respostaKNN.mat', 'respostaObtidasKNN');
+    else
+        load('respostaKNN.mat');
+        load('modeloKNN.mat');
+    end
+end
 
  
