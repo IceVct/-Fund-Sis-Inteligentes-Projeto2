@@ -1,6 +1,6 @@
 function [modeloKNN, respostasObtidas] = knnClassification(valRGB, rotulos, listaImagens)
 % Funcao que vai implementar toda a logica para o treinamento e teste do
-% modelo Bayes
+% modelo KNN
 
 %% Criando e treinando o modelo com as regioes extraida das imagem 6
 modeloKNN = fitcknn(valRGB, rotulos);
