@@ -1,6 +1,6 @@
 function [modeloQDA, respostasObtidas] = qdaClassification(valRGB, rotulos, listaImagens)
 % Funcao que vai implementar toda a logica para o treinamento e teste do
-% modelo Bayes
+% modelo QDA
 
 %% Criando e treinando o modelo com as regioes extraida das imagem 6
 modeloQDA = fitcdiscr(valRGB, rotulos,'DiscrimType','quadratic');
